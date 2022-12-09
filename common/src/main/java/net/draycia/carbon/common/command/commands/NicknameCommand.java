@@ -26,6 +26,8 @@ import cloud.commandframework.minecraft.extras.RichDescription;
 import cloud.commandframework.permission.Permission;
 import com.google.inject.Inject;
 import java.util.function.Supplier;
+import net.draycia.carbon.api.CarbonChatProvider;
+import net.draycia.carbon.api.events.CarbonNicknameEvent;
 import net.draycia.carbon.api.users.CarbonPlayer;
 import net.draycia.carbon.common.channels.ConfigChatChannel;
 import net.draycia.carbon.common.command.CarbonCommand;
@@ -133,6 +135,7 @@ public class NicknameCommand extends CarbonCommand {
 
                     // Setting other player's nickname
                     if (target != null && !target.equals(sender)) {
+                        CarbonChatProvider.carbonChat().eventHandler().emit(new CarbonNicknameEvent(target, target.displayName()));
                         target.displayName(lazyNickname.get());
                         this.carbonMessages.nicknameSet(target, lazyNickname.get());
                         this.carbonMessages.nicknameSetOthers(sender, target.username(), lazyNickname.get());
@@ -143,6 +146,7 @@ public class NicknameCommand extends CarbonCommand {
                             return;
                         }
 
+                        CarbonChatProvider.carbonChat().eventHandler().emit(new CarbonNicknameEvent(sender, sender.displayName()));
                         sender.displayName(lazyNickname.get());
                         this.carbonMessages.nicknameSet(sender, lazyNickname.get());
                     }

@@ -55,6 +55,13 @@ dependencyResolutionManagement {
     // DiscordSRV
     maven("https://m2.dv8tion.net/releases")
     maven("https://nexus.scarsz.me/content/groups/public/")
+    // InteractiveChat
+    maven("https://repo.loohpjames.com/repository") {
+      mavenContent {
+        releasesOnly()
+        includeModule("com.loohp", "InteractiveChat")
+      }
+    }
     mavenLocal()
   }
   repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)

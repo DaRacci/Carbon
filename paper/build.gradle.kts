@@ -21,6 +21,7 @@ dependencies {
   compileOnly("me.clip:placeholderapi:2.10.9") // TODO: move this to libs.versions.yml
   compileOnly(libs.essentialsXDiscord)
   compileOnly(libs.discordsrv)
+  compileOnly(libs.interactiveChat)
 }
 
 carbonShadowPlatform {
