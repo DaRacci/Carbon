@@ -133,6 +133,7 @@ public class NicknameCommand extends CarbonCommand {
 
                     // Setting other player's nickname
                     if (target != null && !target.equals(sender)) {
+                        target.displayName(lazyNickname.get());
                         this.carbonMessages.nicknameSet(target, lazyNickname.get());
                         this.carbonMessages.nicknameSetOthers(sender, target.username(), lazyNickname.get());
                     } else {
